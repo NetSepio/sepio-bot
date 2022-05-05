@@ -8,7 +8,7 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/joho/godotenv"
-	"github.com/vickyshaw29/discord-goBot/x/mux"
+	mux "github.com/vickyshaw29/discord-goBot/x/helper"
 )
 
 var Session, _ = discordgo.New()
@@ -30,7 +30,7 @@ func init() {
 func main() {
 	test := godotenv.Load()
 	// Session.Token = os.Getenv("TOKEN")
-	Session.Token = "Bot token"
+	Session.Token = "Bot "
 	if test != nil {
 		log.Fatal("Error loading .env file")
 	}
