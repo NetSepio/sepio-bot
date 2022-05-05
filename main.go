@@ -30,7 +30,7 @@ func init() {
 func main() {
 	test := godotenv.Load()
 	// Session.Token = os.Getenv("TOKEN")
-	Session.Token = "Bot OTExNTUyOTk3Nzc4MTQxMjY0.YZjD4g.4rFQ5G5k4w3u4bxOGuoU_bFKQ5I"
+	Session.Token = "Bot token"
 	if test != nil {
 		log.Fatal("Error loading .env file")
 	}
