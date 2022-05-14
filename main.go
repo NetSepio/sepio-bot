@@ -20,7 +20,8 @@ func init() {
 		log.Fatal("Error loading .env file")
 	}
 
-	Session.Token = os.Getenv("TOKEN")
+	// Session.Token = "Bot " + os.Getenv("TOKEN")
+	Session.Token = "Bot "
 	Session.AddHandler(Router.OnMessageCreate)
 	Router.Route("/help", "Display this message.", Router.Help)
 	// Router.Route("/joke", "Send a joke", Router.Joke)
@@ -30,11 +31,10 @@ func init() {
 func main() {
 	test := godotenv.Load()
 	// Session.Token = os.Getenv("TOKEN")
-	Session.Token = "Bot "
+	// Session.Token = "Bot " + os.Getenv("TOKEN")
 	if test != nil {
 		log.Fatal("Error loading .env file")
 	}
-
 	err := Session.Open()
 	if err != nil {
 		log.Printf("error opening connection to Discord, %s\n", err)
