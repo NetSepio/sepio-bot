@@ -20,11 +20,9 @@ func init() {
 		log.Fatal("Error loading .env file")
 	}
 
-	// Session.Token = "Bot " + os.Getenv("TOKEN")
-	Session.Token = "Bot "
+	Session.Token = "Bot " + os.Getenv("TOKEN")
 	Session.AddHandler(Router.OnMessageCreate)
 	Router.Route("/help", "Display this message.", Router.Help)
-	// Router.Route("/joke", "Send a joke", Router.Joke)
 	Router.Route("*", "Send a quote", Router.Recommend)
 }
 
