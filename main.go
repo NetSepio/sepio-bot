@@ -7,7 +7,7 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/joho/godotenv"
+	_ "github.com/joho/godotenv/autoload"
 	mux "github.com/vickyshaw29/discord-goBot/x/helper"
 )
 
@@ -15,11 +15,6 @@ var Session, _ = discordgo.New()
 var Router = mux.New()
 
 func init() {
-	test := godotenv.Load()
-	if test != nil {
-		log.Fatal("Error loading .env file")
-	}
-
 	Session.Token = "Bot " + os.Getenv("TOKEN")
 	Session.AddHandler(Router.OnMessageCreate)
 	Router.Route("/help", "Display this message.", Router.Help)
@@ -27,12 +22,8 @@ func init() {
 }
 
 func main() {
-	test := godotenv.Load()
 	// Session.Token = os.Getenv("TOKEN")
 	// Session.Token = "Bot " + os.Getenv("TOKEN")
-	if test != nil {
-		log.Fatal("Error loading .env file")
-	}
 	err := Session.Open()
 	if err != nil {
 		log.Printf("error opening connection to Discord, %s\n", err)
