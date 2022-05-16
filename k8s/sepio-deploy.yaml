@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sepio-bot
+spec:
+  selector:
+    matchLabels:
+      app: sepio-bot
+  template:
+    metadata:
+      labels:
+        app: sepio-bot
+    spec:
+      containers:
+        - name: sepio-bot
+          image: lazarusnetwork/sepio-bot
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+          volumeMounts:
+            - mountPath: "/app/.env"
+              subPath: ".env"
+              name: sepio-bot-env-file
+              readOnly: true
+      volumes:
+        - name: sepio-bot-env-file
+          secret:
+            secretName: sepio-bot-env-secret
