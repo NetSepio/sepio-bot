@@ -131,7 +131,11 @@ func (m *Mux) FuzzyMatch(msg string) string {
 		}
 	}
 	// fmt.Println(recommend, count, "rec")
-	return "```" + recommend
+	if len(recommend) == 0 {
+		return ""
+	} else {
+		return "```" + recommend
+	}
 }
 
 func Extend(tempArray []string, val interface{}) {
@@ -214,11 +218,10 @@ func (m *Mux) OnMessageCreate(ds *discordgo.Session, mc *discordgo.MessageCreate
 	// 	return
 	// }
 	val := m.FuzzyMatch(ctx.Content)
-
-	val += "```\n"
 	if len(val) == 0 {
 		return
 	} else {
+		val += "```\n"
 		ds.ChannelMessageSend(mc.ChannelID, val)
 	}
 	if m.Default != nil && (ctx.HasMentionFirst) {

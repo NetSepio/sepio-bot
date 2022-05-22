@@ -21,7 +21,7 @@ func init() {
 	}
 
 	// Session.Token = "Bot " + os.Getenv("TOKEN")
-	Session.Token = "Bot"
+	Session.Token = "Bot OTExNTUyOTk3Nzc4MTQxMjY0.GV_c44.mQ7ShyvN834FuQpozywFx-wRvcbhPZZHrX_bH0"
 	Session.AddHandler(Router.OnMessageCreate)
 	Router.Route("/help", "Display this message.", Router.Help)
 	// Router.Route("/joke", "Send a joke", Router.Joke)
